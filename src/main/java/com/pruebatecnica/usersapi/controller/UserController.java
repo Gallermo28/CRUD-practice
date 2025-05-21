@@ -41,8 +41,8 @@ public class UserController {
 
     // Endpoint para actualizar parcialmente un usuario (PATCH /api/usuarios/{id})
     @PatchMapping("/{id}")
-    public User actualizarUsuario(@PathVariable long id, @RequestBody Map<String, Object> updates) {
-        return userService.actualizarParcial(id, updates);
+    public User updateUser(@PathVariable long id, @RequestBody Map<String, Object> updates) {
+        return userService.updatePartial(id, updates);
     }
 
 

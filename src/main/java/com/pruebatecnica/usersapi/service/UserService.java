@@ -14,7 +14,7 @@ public interface UserService {
     List<User> listarUsuarios();
 
     // Actualiza parcialmente un usuario por ID con los campos que se reciban
-    User actualizarParcial(Long id, Map<String, Object> updates);
+    User updatePartial(Long id, Map<String, Object> updates);
 
     User getUsuarioPorId(Long id);
 

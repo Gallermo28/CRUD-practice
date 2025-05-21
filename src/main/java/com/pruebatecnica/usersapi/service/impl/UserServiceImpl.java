@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public User actualizarParcial(Long id, Map<String, Object> updates) {
+    public User updatePartial(Long id, Map<String, Object> updates) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
