@@ -1,0 +1,67 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.4.5'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.pruebatecnica'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+
+	// Soporte para REST APIs y Spring MVC
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// Soporte para persistencia con JPA (Hibernate)
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// Soporte para validaciones con anotaciones como @NotBlank, @Email, etc.
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	// --- Base de datos en memoria ---
+
+	// Motor de base de datos H2 para pruebas y desarrollo
+	runtimeOnly 'com.h2database:h2'
+
+	// --- Lombok (para evitar escribir getters/setters manualmente) ---
+
+	// Solo para compilación (no se incluye en el JAR final)
+	compileOnly 'org.projectlombok:lombok'
+
+	// Procesador de anotaciones para Lombok
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// --- Desarrollo en caliente (opcional) ---
+
+	// Reinicio automático de la app cuando cambias el código (solo en desarrollo)
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	// --- Dependencias de test ---
+
+	// Dependencias para tests (JUnit 5, Mockito, Spring Test)
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+
+	// Necesaria para ejecutar pruebas con Gradle si usas JUnit Platform
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
